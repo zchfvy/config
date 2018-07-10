@@ -39,6 +39,7 @@ filetype plugin indent on    " required
 
 " Vim-Colors-Solarized
 " --------------------
+set background=dark
 colorscheme solarized
 
 " Syntastic
