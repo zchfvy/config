@@ -1,0 +1,10 @@
+robbyrussell/oh-my-zsh folder:plugins/aws
+robbyrussell/oh-my-zsh folder:plugins/git
+# robbyrussell/oh-my-zsh folder:plugins/pip
+robbyrussell/oh-my-zsh folder:plugins/colorized-man-pages
+robbyrussell/oh-my-zsh folder:plugins/command-not-found
+robbyrussell/oh-my-zsh folder:plugins/z
+
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
