@@ -147,7 +147,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         font           pango:Terminus 10
-        status_command i3status
+        status_command i3blocks # i3status
 }
 
 for_window [class="^.*"] border pixel 2
@@ -157,21 +157,21 @@ client.unfocused #444444 #444444 #315858
 client.focused_inactive #444444 #444444 #2c2c2f
 client.urgent #383a3b #383a3b #ee0000
 
-set $volfresh pkill -RTMIN+10 i3blocks
+set $refresh pkill -RTMIN+10 i3blocks
 
 # Pulse Audio controls
 # increase sound volume
-bindsym $mod+KP_Up exec --no-startup-id "pactl -- set-sink-volume 1 +2% ; $volfresh"
+bindsym $mod+KP_Up exec --no-startup-id "pactl -- set-sink-volume 1 +2% ; $refresh"
 # decrease sound volume
-bindsym $mod+KP_Down exec --no-startup-id "pactl -- set-sink-volume 1 -2% ; $volfresh"
+bindsym $mod+KP_Down exec --no-startup-id "pactl -- set-sink-volume 1 -2% ; $refresh"
 # mute sound
-bindsym $mod+KP_End exec --no-startup-id "pactl set-sink-mute 1 toggle ; $volfresh"
+bindsym $mod+KP_End exec --no-startup-id "pactl set-sink-mute 1 toggle ; $refresh"
 
 # Media player controls
-bindsym $mod+KP_Prior exec playerctl play
-bindsym $mod+KP_Next exec playerctl pause
-bindsym $mod+KP_Right exec playerctl next
-bindsym $mod+KP_Left exec playerctl previous
+bindsym $mod+KP_Prior exec "playerctl play ; $refresh"
+bindsym $mod+KP_Next exec "playerctl pause ; $refresh"
+bindsym $mod+KP_Right exec "playerctl next ; $refresh"
+bindsym $mod+KP_Left exec "playerctl previous ; $refresh"
 
 # Switch user key
 bindsym $mod+Shift+w exec gdmflexiserver --new
