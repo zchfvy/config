@@ -121,8 +121,18 @@ set undoreload=1000
 set backup
 
 " Store vim files in their own location
+silent !mkdir -p $HOME/vim/backup
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "p")
+endif
 set backupdir=~/.vim/backup,/tmp
+if !isdirectory($HOME."/.vim/swp")
+    call mkdir($HOME."/.vim/swp", "p")
+endif
 set directory=~/.vim/swp
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p")
+endif
 set undodir=~/.vim/undo
 
 " configure expanding of tabs for various file types
