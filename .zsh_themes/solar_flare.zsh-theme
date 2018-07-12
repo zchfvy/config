@@ -43,6 +43,11 @@ preexec() {
 }
 
 
+# Comamnds to not draw status for
+NOSTATUS=(ls clear cd z pwd)
+
+
+# Powerline symbols
 PL_FR="\ue0b0"
 PL_TR="\ue0b1"
 PL_FL="\ue0b2"
@@ -79,10 +84,12 @@ get_prompt() {
     # TODO: Composite command dtection
     # TODO : Better sudo detection
         LAST_CMD=$(echo $LAST | sed -E 's/^(\S+).*/\1/')
-        if [[ $LAST_CMD == 'sudo' ]]; then
-            SUDO="%{%B%}%{%F{$AC_RED}%}${PL_TR}SUDO${PL_TR}%{%f%}%{%b%} "
+        if (( ! ${NOSTATUS[(Ie)$LAST_CMD]} )); then
+            if [[ $LAST_CMD == 'sudo' ]]; then
+                SUDO="%{%B%}%{%F{$AC_RED}%}${PL_TR}SUDO${PL_TR}%{%f%}%{%b%} "
+            fi
+            echo "%{%K{$BG_ALT}%} - $SUDO$LAST_CMD ($($?)) - %{%k%}%{%F{$BG_ALT}%}$PL_FR"
         fi
-        echo "%{%K{$BG_ALT}%} - $SUDO$LAST_CMD ($($?)) - %{%k%}%{%F{$BG_ALT}%}$PL_FR"
     fi
     echo "%{%f%}%{%K{$BG_ALT}%} %~ >>%{%k%}%{%F{$BG_ALT}%}$PL_FR%{%f%}"
 }
