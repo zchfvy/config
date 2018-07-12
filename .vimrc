@@ -142,4 +142,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Gutter + word wrap
 set textwidth=80
-let &l:colorcolumn="+".join(range(0,999),",+")
+let &l:colorcolumn="+".join(range(1,999),",+")
+
+" Use underline for spell check
+hi SpellBad cterm=underline
