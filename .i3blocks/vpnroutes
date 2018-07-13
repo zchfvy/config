@@ -1,14 +1,27 @@
 #!/bin/bash
 
 LABEL=$1
-ROUTE=$2
+ID=$2
 
 
 COLOR_UP='"#00ff00"'
 COLOR_DOWN='"#FF0000"'
+COLOR_CONNECTING='"#FFFF00"'
 
-if (nmcli | grep "$ROUTE" > /dev/null); then
-    echo "<span color=$COLOR_UP>$LABEL</span>";
+STATUS=$(pritunl-client list | grep $ID | awk '{print $3}')
+
+
+
+if [[ $BLOCK_BUTTON -eq 1 ]]; then
+    (pritunl-client start $ID && pkill -RTMIN+11 i3blocks) &>/dev/null &
+    echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
+elif [[ $BLOCK_BUTTON -eq 3 ]]; then
+    (pritunl-client stop $ID) &>/dev/null &
+    echo "<span color=$COLOR_DOWN>$LABEL</span>"
+elif [ "$STATUS" = "connected" ]; then
+    echo "<span color=$COLOR_UP>$LABEL</span>"
+elif [ "$STATUS" = "connecting" ]; then
+    echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
 else
-    echo "<span color=$COLOR_DOWN>$LABEL</span>";
+    echo "<span color=$COLOR_DOWN>$LABEL</span>"
 fi;
