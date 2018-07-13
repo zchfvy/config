@@ -3,6 +3,7 @@ robbyrussell/oh-my-zsh folder:plugins/git
 # robbyrussell/oh-my-zsh folder:plugins/pip
 robbyrussell/oh-my-zsh folder:plugins/colorized-man-pages
 robbyrussell/oh-my-zsh folder:plugins/command-not-found
+robbyrussell/oh-my-zsh folder:plugins/ssh-agent
 robbyrussell/oh-my-zsh folder:plugins/z
 
 zsh-users/zsh-syntax-highlighting
