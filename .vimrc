@@ -1,37 +1,34 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Bootstrap vim plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" -- PLUGINS --
-
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/CtrlP.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'ervandew/supertab'
-Plugin 'hashivim/vim-hashicorp-tools'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'majutsushi/tagbar'
-"Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'thaerkh/rainbow_parentheses.vim'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/CtrlP.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'junegunn/vim-easy-align'
+Plug 'majutsushi/tagbar'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
+Plug 'thaerkh/rainbow_parentheses.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/DrawIt'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
 
 "------------------------------------------------------------------------------
 " Plugin specific config
