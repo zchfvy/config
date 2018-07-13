@@ -133,20 +133,26 @@ sub playerctl {
         $icon = "\x{f04d}";
         $color = "#af0000";
     }
-    push(@metadata, "<span color=\"$color\">$icon</span>");
+    # push(@metadata, "<span color=\"$color\">$icon</span>");
+    print("<span color=\"$color\">$icon</span>");
+
+    print(" ");
 
     my $artist = qx(playerctl $player_arg metadata artist);
     # exit status will be nonzero when playerctl cannot find your player
     exit(0) if $? || $artist eq '(null)';
+    print($artist);
 
-    push(@metadata, $artist) if $artist;
+    # push(@metadata, $artist) if $artist;
+    print(" - ");
 
     my $title = qx(playerctl $player_arg metadata title);
     exit(0) if $? || $title eq '(null)';
+    print($title);
 
-    push(@metadata, $title) if $title;
+    # push(@metadata, $title) if $title;
 
-    print(join(" - ", @metadata)) if @metadata;
+    # print(join(" - ", @metadata)) if @metadata;
 }
 
 sub rhythmbox {
