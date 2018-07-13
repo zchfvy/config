@@ -11,10 +11,6 @@ sudo apt install \
 # Pip packages
 sudo -H pip install virtualenv virtualenvwrapper
 
-# Configure vim
-mkdir -p ~/.vim/swp ~/.vim/backup ~/.vim/undo
-geit clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 # Shell configuration
 curl -sL git.io/antibody | sh -s
 # git clone https://github.com/seebi/dircolors-solarized.git .dircolors
