@@ -114,6 +114,12 @@ set showcmd 			" show (partial) command in status line
 " Add relative line numbers
 set number relativenumber
 
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " Enable undo and backup
 set undofile
 set undolevels=100
