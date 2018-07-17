@@ -111,6 +111,9 @@ set ruler               " show line and column number
 syntax on   			" syntax highlighting
 set showcmd 			" show (partial) command in status line
 
+" Add relative line numbers
+set number relativenumber
+
 " Enable undo and backup
 set undofile
 set undolevels=100
@@ -143,6 +146,7 @@ cmap w!! w !sudo tee > /dev/null %
 " Gutter + word wrap
 set textwidth=80
 let &l:colorcolumn="+".join(range(1,999),",+")
+hi NonText ctermbg=0
 
 " Use underline for spell check
 hi SpellBad cterm=underline
