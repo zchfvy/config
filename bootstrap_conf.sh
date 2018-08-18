@@ -3,10 +3,11 @@
 # Apt Packages
 sudo apt install \
     i3 arandr xautolock \
-    zsh vim wget curl git tmux htop \
+    zsh vim wget curl git gitk tmux htop \
+    jq \
     python python-pip python3-pip virtualenvwrapper python3-distutils \
     scrot unclutter terminator playerctl libsixel-bin spotify-client \
-    helix-cli slack-desktop keepass2
+    helix-cli slack-desktop keepass2 xdotool
 
 # Pip packages
 sudo -H pip install virtualenv virtualenvwrapper

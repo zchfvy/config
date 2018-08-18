@@ -7,5 +7,5 @@ robbyrussell/oh-my-zsh folder:plugins/ssh-agent
 robbyrussell/oh-my-zsh folder:plugins/z
 
 zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
+# zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search

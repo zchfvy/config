@@ -65,7 +65,7 @@ alias ls='ls --color=auto'
 #
 #SSH
 # ssh () { command ssh "$@"; ~/.ssh/colorterm.sh none}
-alias jassh="ssh -i ~/.ssh/jasonhamiltonsmith"
+alias jassh="ssh -i ~/.ssh/jasonhamiltonsmith -l jhamiltonsmith"
 # Add RVM to PATH for scripting.
 # Make sure this is the last PATH variable change.
 #
