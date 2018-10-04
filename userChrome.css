@@ -1,0 +1,17 @@
+#tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox { min-height: 0 !important; }
+#tabbrowser-tabs tab { height: var(--tab-min-height); }
+#tabbrowser-tabs tab:first-child:last-child { display: none !important; }
+
+#nav-bar {
+    overflow-y: hidden !important;
+    margin-bottom: -2.70em;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    opacity: 0;
+    transition: opacity 0.2s, max-height 0.2s;
+}
+:hover > #nav-bar { 
+    max-height: 2.70em !important;
+    opacity: 1;
+    transition: opacity 0.2s;
+} 
