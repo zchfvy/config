@@ -156,3 +156,6 @@ hi NonText ctermbg=0
 
 " Use underline for spell check
 hi SpellBad cterm=underline
+
+" Usaeable mouse
+set mouse=a
