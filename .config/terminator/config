@@ -1,6 +1,7 @@
 [global_config]
   borderless = True
   extra_styling = False
+  inactive_color_offset = 0.958997722096
   tab_position = hidden
 [keybindings]
 [layouts]
