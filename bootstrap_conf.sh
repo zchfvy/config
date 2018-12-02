@@ -1,4 +1,5 @@
 #/usr/bin/sh
+cd ~
 
 # Apt Packages
 sudo apt install \
@@ -15,6 +16,12 @@ sudo -H pip install virtualenv virtualenvwrapper
 # Shell configuration
 curl -sL git.io/antibody | sh -s
 # git clone https://github.com/seebi/dircolors-solarized.git .dircolors
+
+# Nerd Fonts
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
+sudo fc-cache -fv
+cd ~
 
 #####################
 # Optional Software #
