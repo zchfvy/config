@@ -157,6 +157,8 @@ client.unfocused #444444 #444444 #315858
 client.focused_inactive #444444 #444444 #2c2c2f
 client.urgent #383a3b #383a3b #ee0000
 
+
+# Required for refreshing i3bar
 set $refresh pkill -RTMIN+10 i3blocks
 
 # Pulse Audio controls
@@ -172,9 +174,13 @@ bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle ; $refr
 
 # Media player controls
 bindsym $mod+KP_Prior exec "playerctl play ; $refresh"
+bindsym XF86AudioPlay exec "playerctl play ; $refresh"
 bindsym $mod+KP_Next exec "playerctl pause ; $refresh"
+bindsym XF86AudioStop exec "playerctl pause ; $refresh"
 bindsym $mod+KP_Right exec "playerctl next ; $refresh"
+bindsym XF86AudioNext exec "playerctl next ; $refresh"
 bindsym $mod+KP_Left exec "playerctl previous ; $refresh"
+bindsym XF86AudioPrev exec "playerctl previous ; $refresh"
 
 # Switch user key
 bindsym $mod+Shift+w exec gdmflexiserver --new
@@ -194,4 +200,5 @@ bindsym $mod+Control+k exec i3-msg 'move workspace to output down'
 bindsym $mod+Control+l exec i3-msg 'move workspace to output up'
 bindsym $mod+Control+semicolon exec i3-msg 'move workspace to output right'
 
-
+# Workspace assignments
+for_window [class="Spotify"] move to workspace spotify
