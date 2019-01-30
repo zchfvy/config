@@ -58,8 +58,6 @@ zstyle ':completion:*' menu select
 
 # Alieses
 alias ls='ls --color=auto'
-alias python='python3'
-alias pip='pip3'
 
 # #############################
 # # -- Work Specific Stuff -- #
