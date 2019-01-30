@@ -20,6 +20,8 @@ PATH=$PATH:~/bin
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
+export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 # Solarized LS colors (and autocomplete list too)
 eval `dircolors ~/.dircolors/dircolors.256dark ` 
