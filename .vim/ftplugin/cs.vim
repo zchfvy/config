@@ -73,3 +73,6 @@ nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
 " Enable snippet completion
 " let g:OmniSharp_want_snippet=1
+
+" Enable syntastic
+let g:syntastic_cs_checkers = ['code_checker']
