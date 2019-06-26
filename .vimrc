@@ -36,7 +36,10 @@ call plug#end()
 
 " Vim-Colors-Solarized
 " --------------------
-set background=dark
+set background=light
+if system("~/.zsh_themes/is_term_dark.sh")
+    set background=dark
+endif
 colorscheme solarized
 
 " Syntastic
@@ -152,7 +155,7 @@ cmap w!! w !sudo tee > /dev/null %
 " Gutter + word wrap
 set textwidth=80
 let &l:colorcolumn="+".join(range(1,999),",+")
-hi NonText ctermbg=0
+" hi NonText ctermbg=0
 
 " Use underline for spell check
 hi SpellBad cterm=underline
