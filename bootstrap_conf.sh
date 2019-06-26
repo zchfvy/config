@@ -3,7 +3,7 @@ cd ~
 
 # Apt Packages
 sudo apt install \
-    i3 arandr xautolock \
+    i3 i3blocks arandr xautolock \
     zsh vim wget curl git gitk tmux htop \
     jq \
     python python-pip python3-pip virtualenvwrapper python3-distutils \
