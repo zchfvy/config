@@ -14,7 +14,7 @@ set completeopt=longest,menuone,preview
 " There is a performance penalty with this (especially on Mono).
 " By default, only Type/Method signatures are fetched. Full documentation can
 " still be fetched when you need it with the :OmniSharpDocumentation command.
-"let g:omnicomplete_fetch_full_documentation = 1
+let g:omnicomplete_fetch_full_documentation = 1
 
 " When Syntastic is available but not ALE, automatic syntax check on events
 " (TextChanged requires Vim 7.4)
@@ -76,3 +76,7 @@ nnoremap <Leader>sp :OmniSharpStopServer<CR>
 
 " Enable syntastic
 let g:syntastic_cs_checkers = ['code_checker']
+
+
+" NERDTREE - ignore .meta files for unity
+let NERDTreeIgnore = ['\.meta$']
