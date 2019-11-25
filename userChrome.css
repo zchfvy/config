@@ -1,3 +1,4 @@
+tab:only-of-type { display:none; }
 #tabbrowser-tabs, #tabbrowser-tabs arrowscrollbox { min-height: 0 !important; }
 #tabbrowser-tabs tab { height: var(--tab-min-height); }
 #tabbrowser-tabs tab:first-child:last-child { display: none !important; }
