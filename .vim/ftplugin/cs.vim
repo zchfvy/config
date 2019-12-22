@@ -80,3 +80,7 @@ let g:syntastic_cs_checkers = ['code_checker']
 
 " NERDTREE - ignore .meta files for unity
 let NERDTreeIgnore = ['\.meta$']
+
+" Fold '#region' tags
+let b:match_words = '\s*#\s*region.*$:\s*#\s*endregion'
+set foldmethod=syntax
