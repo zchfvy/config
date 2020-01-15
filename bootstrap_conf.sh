@@ -23,6 +23,16 @@ cd ~/.local/share/fonts && wget https://github.com/ryanoasis/nerd-fonts/raw/mast
 sudo fc-cache -fv
 cd ~
 
+#############################
+# Setup Forefox user-chrome #
+#############################
+FF_PROFILE=$(ls -1 $HOME/.mozilla/firefox/ | grep '.default')
+CHROME_DIR=$HOME/.mozilla/firefox/$FF_PROFILE/chrome
+mkdir -p $CHROME_DIR
+rm -f $CHROME_DIR/userChrome.css  
+mkdir -p $CHROME_DIR
+ln -s $HOME/.userChrome.css $CHROME_DIR/userChrome.css
+
 #####################
 # Optional Software #
 #####################
