@@ -17,17 +17,23 @@ alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 # Personal scripts
 PATH=$PATH:~/bin
 
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/projects
-export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
-source ~/.local/bin/virtualenvwrapper_lazy.sh
-
 # Solarized LS colors (and autocomplete list too)
 eval `dircolors ~/.dircolors/dircolors.256dark ` 
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
+
+# Pyenv
+# export PATH="/home/jason/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+export VIRTUALENV_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 # ########################
 # # -- Personal Prefs -- #
@@ -58,18 +64,3 @@ zstyle ':completion:*' menu select
 
 # Alieses
 alias ls='ls --color=auto'
-
-# #############################
-# # -- Work Specific Stuff -- #
-# #############################
-#
-#SSH
-# ssh () { command ssh "$@"; ~/.ssh/colorterm.sh none}
-alias jassh="ssh -i ~/.ssh/jasonhamiltonsmith -l jhamiltonsmith"
-# Add RVM to PATH for scripting.
-# Make sure this is the last PATH variable change.
-#
-# DO I STILL NEED THIS??
-# export PATH="$PATH:$HOME/.rvm/bin"
-# source /home/jhamiltonsmith/.rvm/scripts/rvm
-#zprof
