@@ -161,4 +161,4 @@ let &l:colorcolumn="+".join(range(1,999),",+")
 hi SpellBad cterm=underline
 
 " Usaeable mouse
-set mouse=a
+set mouse=v
