@@ -35,6 +35,9 @@ export VIRTUALENV_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
 source ~/.local/bin/virtualenvwrapper_lazy.sh
 
+# Python
+alias python=python3
+
 # ########################
 # # -- Personal Prefs -- #
 # ########################
