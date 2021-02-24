@@ -1,0 +1,37 @@
+#!/bin/bash
+
+LABEL=$1
+CONF=$2
+
+COLOR_UP='"#00ff00"'
+COLOR_DOWN='"#FF0000"'
+COLOR_CONNECTING='"#FFFF00"'
+
+STATUS=mktemp
+openvpn3 sessions-list \
+        | grep -A2 $CONF \
+        | grep 'Status' \
+        | sed -E 's/^ +Status: (.*)$/\1/' \
+        | sed 's/, /\n/g' \
+        >$STATUS
+
+CONNECTION=$(cat $STATUS | grep -E "^Connection$")
+CONNECTED=$(cat $STATUS |  grep -E "^Client connected$")
+CONNECTING=$(cat $STATUS | grep -E "^Client connecting$")
+CHALLENGE=$(cat $STATUS | grep -E "^Configuration requires user input: Dynamic Challenge$")
+
+rm $STATUS
+
+if [[ $BLOCK_BUTTON -eq 1 ]]; then
+    echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
+    terminator -T "OpenSSH" -x openvpn3 session-start --config $CONF && pkill -RTMIN+10 i3blocks
+elif [[ $BLOCK_BUTTON -eq 3 ]]; then
+    echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
+    openvpn3 session-manage --config $CONF --disconnect >/dev/null
+elif [ -n "$CONNECTED" ]; then
+    echo "<span color=$COLOR_UP>$LABEL</span>"
+elif [ -n "$CONNECTION" ]; then
+    echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
+else
+    echo "<span color=$COLOR_DOWN>$LABEL</span>"
+fi;

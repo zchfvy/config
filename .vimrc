@@ -28,6 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/DrawIt'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'davisdude/vim-love-docs', {'branch': 'build'}
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -37,9 +38,9 @@ call plug#end()
 " Vim-Colors-Solarized
 " --------------------
 set background=light
-if system("~/.zsh_themes/is_term_dark.sh")
-    set background=dark
-endif
+" if system("~/.zsh_themes/is_term_dark.sh")
+   set background=dark
+" endif
 colorscheme solarized
 
 " Syntastic
@@ -55,6 +56,7 @@ let g:syntastic_check_on_w = 0
 let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_python_flake8_args = "--max-complexity 10"
+let g:syntastic_lua_luac_executable = "luac5.3"
 
 command! Nostyle let g:syntastic_quiet_messages = { "type": "style" } | edit
 command! Style let g:syntastic_quiet_messages = { } | edit
@@ -68,6 +70,7 @@ nmap ga <Plug>(EasyAlign)
 " Jedi
 " ----
 let g:jedi#smart_auto_mappings = 0
+let g:syntastic_python_python_exec = 'python3'
 
 " NERDtree
 " --------
@@ -159,6 +162,7 @@ let &l:colorcolumn="+".join(range(1,999),",+")
 
 " Use underline for spell check
 hi SpellBad cterm=underline
+set spellfile=~/.vim/spell.utf-8.add
 
 " Usaeable mouse
 set mouse=v

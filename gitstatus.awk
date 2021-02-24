@@ -26,6 +26,14 @@ $1 ~ /[1]/ {
         UNMERGED += 1
     }
 }
+$1 ~ /[2]/ {
+    if (match($2, "[MADRC].")) {
+        MOVED += 1
+    }
+    if (match($2, ".[MADRC]")) {
+        MOVED += 1
+    }
+}
 $1 ~ /\?/ {
     UNTRACKED += 1
 }
@@ -46,6 +54,9 @@ END {
     }
     if (WORKING) {
         printf("  " WORKING)
+    }
+    if (MOVED) {
+        printf("   " MOVED)
     }
     if (UNTRACKED) {
         printf("  " UNTRACKED)

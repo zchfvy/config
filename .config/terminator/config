@@ -1,8 +1,16 @@
 [global_config]
   extra_styling = False
+  hide_from_taskbar = True
   inactive_color_offset = 0.958997722096
   tab_position = hidden
 [keybindings]
+  full_screen = None
+  help = None
+  layout_launcher = ""
+  toggle_scrollbar = None
+  toggle_zoom = None
+  ungroup_all = None
+  ungroup_tab = None
 [layouts]
   [[default]]
     [[[child1]]]

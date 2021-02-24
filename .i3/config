@@ -160,17 +160,18 @@ client.urgent #383a3b #383a3b #ee0000
 
 # Required for refreshing i3bar
 set $refresh pkill -RTMIN+10 i3blocks
+set $pactl_sink 1
 
 # Pulse Audio controls
 # increase sound volume
-bindsym $mod+KP_Up exec --no-startup-id "pactl -- set-sink-volume 0 +2% ; $refresh"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl -- set-sink-volume 0 +2% ; $refresh"
+bindsym $mod+KP_Up exec --no-startup-id "pactl -- set-sink-volume $pactl_sink +2% ; $refresh"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl -- set-sink-volume $pactl_sink +2% ; $refresh"
 # decrease sound volume
-bindsym $mod+KP_Down exec --no-startup-id "pactl -- set-sink-volume 0 -2% ; $refresh"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl -- set-sink-volume 0 -2% ; $refresh"
+bindsym $mod+KP_Down exec --no-startup-id "pactl -- set-sink-volume $pactl_sink -2% ; $refresh"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl -- set-sink-volume $pactl_sink -2% ; $refresh"
 # mute sound
-bindsym $mod+KP_End exec --no-startup-id "pactl set-sink-mute 0 toggle ; $refresh"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle ; $refresh"
+bindsym $mod+KP_End exec --no-startup-id "pactl set-sink-mute $pactl_sink toggle ; $refresh"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $pactl_sink toggle ; $refresh"
 
 # Media player controls
 bindsym $mod+KP_Prior exec "playerctl play ; $refresh"
@@ -201,4 +202,17 @@ bindsym $mod+Control+l exec i3-msg 'move workspace to output up'
 bindsym $mod+Control+semicolon exec i3-msg 'move workspace to output right'
 
 # Workspace assignments
-for_window [class="Spotify"] move to workspace spotify
+for_window [class="^Spotify$"] move to workspace spotify
+for_window [class="^dota2$"] fullscreen
+for_window [class="^dota2$"] move to workspace dota2
+for_window [class="^dota2$"] workspace dota2
+# steam bigpicture uses lowercase 'steam' as it's class
+for_window [class="^steam$"] move to workspace big_picture
+for_window [class="^steam$"] workspace big_picture
+# We need to set normal steam to also have a workspace, or it will get left
+# behind when big picure closes
+for_window [class="^Steam$"] move to workspace steam
+for_window [class="^Steam$"] workspace steam
+
+# My openssh popup
+for_window [title="OpenSSH"] floating enable

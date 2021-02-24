@@ -36,7 +36,10 @@ export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
 source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 # Python
-alias python=python3
+# alias python=python3
+# alias pip=pip3
+# alias python2=/usr/bin/python
+# alias pip2=/usr/bin/pip
 
 # ########################
 # # -- Personal Prefs -- #

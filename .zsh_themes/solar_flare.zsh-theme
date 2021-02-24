@@ -43,7 +43,8 @@ PL_TL="\ue0b3"
 build_prompt() {
 
     # Setup colors
-    DARK=$(~/.zsh_themes/is_term_dark.sh)
+    # DARK=$(~/.zsh_themes/is_term_dark.sh)
+    DARK=1
 
     if [[ $DARK -ne 0 ]]; then
         C_BG_STD=8

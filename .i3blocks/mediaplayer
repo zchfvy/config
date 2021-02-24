@@ -142,6 +142,7 @@ sub playerctl {
     # exit status will be nonzero when playerctl cannot find your player
     exit(0) if $? || $artist eq '(null)';
     $artist =~ s/&/&amp;/g;
+    $artist =~ s/\n//g;
     print($artist);
 
     # push(@metadata, $artist) if $artist;
