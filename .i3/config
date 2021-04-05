@@ -152,9 +152,9 @@ bar {
 
 for_window [class="^.*"] border pixel 2
 
-client.focused #9fbc00 #9fbc00 #111111
-client.unfocused #444444 #444444 #315858
-client.focused_inactive #444444 #444444 #2c2c2f
+client.focused #00bc9f #00bc9f #111111
+client.unfocused #444444 #444444 #8888bb
+client.focused_inactive #666677 #666677 #ccccff
 client.urgent #383a3b #383a3b #ee0000
 
 
@@ -215,4 +215,6 @@ for_window [class="^Steam$"] move to workspace steam
 for_window [class="^Steam$"] workspace steam
 
 # My openssh popup
-for_window [title="OpenSSH"] floating enable
+for_window [window_role="LoginTerm" title="OpenSSH"] floating enable
+
+for_window [class="love"] floating disable
