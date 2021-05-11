@@ -23,6 +23,12 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")" 
+
 # Pyenv
 # export PATH="/home/jason/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
@@ -70,3 +76,5 @@ zstyle ':completion:*' menu select
 
 # Alieses
 alias ls='ls --color=auto'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

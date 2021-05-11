@@ -6,7 +6,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/CtrlP.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
@@ -37,11 +38,16 @@ call plug#end()
 
 " Vim-Colors-Solarized
 " --------------------
-set background=light
+"set background=light
 " if system("~/.zsh_themes/is_term_dark.sh")
-   set background=dark
+"   set background=dark
 " endif
-colorscheme solarized
+" colorscheme solarized
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 
 " Syntastic
 " ---------
