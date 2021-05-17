@@ -8,7 +8,7 @@ source <(antibody init)
 antibody bundle < ~/.zsh_plugins
 
 # Theme
-source $HOME/.zsh_themes/solar_flare.zsh-theme
+source $HOME/.zsh_themes/agnoster.zsh-theme
 setopt PROMPT_SUBST
 
 # Setup 'config' script alias to save local dotfiles
