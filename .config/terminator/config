@@ -1,4 +1,5 @@
 [global_config]
+  dbus = False
   extra_styling = False
   hide_from_taskbar = True
   inactive_color_offset = 0.958997722096
@@ -27,8 +28,14 @@
     cursor_color = "#aaaaaa"
     font = SauceCodePro Nerd Font 10
     foreground_color = "#839496"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
     scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[dialog]]
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = SauceCodePro Nerd Font 10
     show_titlebar = False
     use_system_font = False
   [[light]]
@@ -38,5 +45,15 @@
     foreground_color = "#657b83"
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+  [[test]]
+    cursor_color = "#aaaaaa"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+  [[translucent]]
+    background_darkness = 0.66
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = SauceCodePro Nerd Font 10
     show_titlebar = False
     use_system_font = False

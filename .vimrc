@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/DrawIt'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
+Plug 'ConradIrwin/vim-bracketed-paste'
 call plug#end()
 
 "------------------------------------------------------------------------------

@@ -24,10 +24,10 @@ rm $STATUS
 
 if [[ $BLOCK_BUTTON -eq 1 ]]; then
     echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
-    terminator -T "OpenSSH" -x openvpn3 session-start --config $CONF && pkill -RTMIN+10 i3blocks
+    terminator -p dialog -r "LoginTerm" -T "OpenSSH" -x openvpn3 session-start --config $CONF && pkill -RTMIN+10 i3blocks
 elif [[ $BLOCK_BUTTON -eq 3 ]]; then
     echo "<span color=$COLOR_CONNECTING>$LABEL</span>"
-    openvpn3 session-manage --config $CONF --disconnect >/dev/null
+    openvpn3 sessions-list  | grep -B4 $CONF | grep Path: | awk '{print $2}' | xargs -I {} openvpn3 session-manage --disconnect --path {}
 elif [ -n "$CONNECTED" ]; then
     echo "<span color=$COLOR_UP>$LABEL</span>"
 elif [ -n "$CONNECTION" ]; then

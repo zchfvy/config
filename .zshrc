@@ -8,7 +8,7 @@ source <(antibody init)
 antibody bundle < ~/.zsh_plugins
 
 # Theme
-source $HOME/.zsh_themes/agnoster.zsh-theme
+source $HOME/.zsh_themes/my-bt.zsh-theme
 setopt PROMPT_SUBST
 
 # Setup 'config' script alias to save local dotfiles
@@ -74,7 +74,9 @@ bindkey '^[[1;5B' history-substring-search-down
 bindkey '^[[Z' reverse-menu-complete
 zstyle ':completion:*' menu select
 
-# Alieses
+# Aliases and functions
 alias ls='ls --color=auto'
+alias less='less -R'
+cheat() { curl -s cheat.sh/"$1" | less }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

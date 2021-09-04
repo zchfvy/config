@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $term alacritty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -24,7 +25,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -160,28 +161,15 @@ client.urgent #383a3b #383a3b #ee0000
 
 # Required for refreshing i3bar
 set $refresh pkill -RTMIN+10 i3blocks
-set $pactl_sink 1
+set $pactl_sink $(pactl list sinks | grep -E '(Name: |Sink #[0-9]+)' | grep -B1 analog-stereo | sed -nE 's/^Sink #([0-9]+)/\1/p')
 
 # Pulse Audio controls
 # increase sound volume
-bindsym $mod+KP_Up exec --no-startup-id "pactl -- set-sink-volume $pactl_sink +2% ; $refresh"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl -- set-sink-volume $pactl_sink +2% ; $refresh"
 # decrease sound volume
-bindsym $mod+KP_Down exec --no-startup-id "pactl -- set-sink-volume $pactl_sink -2% ; $refresh"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl -- set-sink-volume $pactl_sink -2% ; $refresh"
 # mute sound
-bindsym $mod+KP_End exec --no-startup-id "pactl set-sink-mute $pactl_sink toggle ; $refresh"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $pactl_sink toggle ; $refresh"
-
-# Media player controls
-bindsym $mod+KP_Prior exec "playerctl play ; $refresh"
-bindsym XF86AudioPlay exec "playerctl play ; $refresh"
-bindsym $mod+KP_Next exec "playerctl pause ; $refresh"
-bindsym XF86AudioStop exec "playerctl pause ; $refresh"
-bindsym $mod+KP_Right exec "playerctl next ; $refresh"
-bindsym XF86AudioNext exec "playerctl next ; $refresh"
-bindsym $mod+KP_Left exec "playerctl previous ; $refresh"
-bindsym XF86AudioPrev exec "playerctl previous ; $refresh"
 
 # Switch user key
 bindsym $mod+Shift+w exec gdmflexiserver --new
@@ -189,6 +177,20 @@ bindsym $mod+Shift+w exec gdmflexiserver --new
 bindsym $mod+Control+Return exec ~/.i3/fuzzy_lock.sh
 # exec killall xautolock
 exec xautolock -time 15 -locker '~/.i3/fuzzy_lock.sh' &
+
+# My scratchpads
+bindsym $mod+F1 exec i3-scratchpad -t -atc -mt -d100%x33% $term
+bindsym $mod+F3 exec i3-scratchpad -s "HDMI-0" -t -acl -ml -d50%x100% keepass
+bindsym $mod+F4 exec i3-scratchpad -t -acc -mb -d80%x80% spotify
+
+# Media player controls
+bindsym $mod+F6 exec "playerctl play-pause ; $refresh"
+bindsym XF86AudioPlay exec "playerctl play ; $refresh"
+bindsym XF86AudioStop exec "playerctl pause ; $refresh"
+bindsym $mod+F7 exec "playerctl next ; $refresh"
+bindsym XF86AudioNext exec "playerctl next ; $refresh"
+bindsym $mod+F5 exec "playerctl previous ; $refresh"
+bindsym XF86AudioPrev exec "playerctl previous ; $refresh"
 
 
 # My custom binds (Control)
@@ -202,7 +204,6 @@ bindsym $mod+Control+l exec i3-msg 'move workspace to output up'
 bindsym $mod+Control+semicolon exec i3-msg 'move workspace to output right'
 
 # Workspace assignments
-for_window [class="^Spotify$"] move to workspace spotify
 for_window [class="^dota2$"] fullscreen
 for_window [class="^dota2$"] move to workspace dota2
 for_window [class="^dota2$"] workspace dota2

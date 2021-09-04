@@ -8,7 +8,7 @@ sudo apt install \
     jq \
     python python-pip python3-pip virtualenvwrapper python3-distutils \
     scrot unclutter terminator libsixel-bin \
-    keepass2 xdotool thefuck
+    keepass2 xdotool thefuck xcompmgr httpie mosh
 
 # Pip packages
 sudo -H pip install virtualenv virtualenvwrapper

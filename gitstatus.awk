@@ -41,13 +41,15 @@ $1 ~ /\!/ {
     IGNORED += 1
 }
 END {
-    printf("${AC_BLU}" BRANCH "${FG_STD}")
+    printf(BRANCH)
     if (AHEAD || BEHIND) {
-        printf(" (")
-        printf("$AC_GRN" AHEAD)
-        printf("$AC_RED" BEHIND)
-        printf("$FG_STD")
-        printf(") ")
+        printf("(")
+        printf(AHEAD)
+        if (AHEAD && BEHIND) {
+            printf("/")
+        }
+        printf(BEHIND)
+        printf(")")
     }
     if (INDEX) {
         printf("  " INDEX)
@@ -56,7 +58,7 @@ END {
         printf("  " WORKING)
     }
     if (MOVED) {
-        printf("   " MOVED)
+        printf("  " MOVED)
     }
     if (UNTRACKED) {
         printf("  " UNTRACKED)
