@@ -6,7 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-# Core functionality plugins
+" Core functionality plugins
 Plug 'chriskempson/base16-vim'
 Plug 'ervandew/supertab'
 Plug 'dense-analysis/ale'
@@ -29,6 +29,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
+Plug 'prabirshrestha/vim-lsp'
 " Language and library support pluins
 Plug 'davidhalter/jedi-vim'
 Plug 'sirtaj/vim-openscad'
