@@ -15,7 +15,7 @@ setopt PROMPT_SUBST
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # Personal scripts
-PATH=$PATH:~/bin
+# PATH=$PATH:~/bin
 
 # Solarized LS colors (and autocomplete list too)
 eval `dircolors ~/.dircolors/dircolors.256dark ` 
@@ -80,3 +80,8 @@ alias less='less -R'
 cheat() { curl -s cheat.sh/"$1" | less }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

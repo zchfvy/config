@@ -15,6 +15,7 @@ Plug 'hashivim/vim-hashicorp-tools'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'puremourning/vimspector'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
@@ -31,6 +32,7 @@ Plug 'vim-scripts/DrawIt'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'sirtaj/vim-openscad'
 call plug#end()
 
 "------------------------------------------------------------------------------
@@ -58,8 +60,8 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_w = 0
+let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_w = 0
 let g:syntastic_check_on_wq = 0
 
 " let g:syntastic_python_flake8_args = "--max-complexity 10"
@@ -76,7 +78,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Jedi
 " ----
-let g:jedi#smart_auto_mappings = 0
+"let g:jedi#smart_auto_mappings = 0
 let g:syntastic_python_python_exec = 'python3'
 
 " NERDtree
@@ -106,6 +108,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(pyc|meta)$'
 " ------
 nmap <C-t> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
+
+" Vimpsector
+" -----
+let g:vimspector_enable_mappings = 'HUMAN'
 
 "------------------------------------------------------------------------------
 " configure editor with tabs and nice stuff...

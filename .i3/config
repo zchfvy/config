@@ -174,13 +174,16 @@ bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute $pactl_sink togg
 # Switch user key
 bindsym $mod+Shift+w exec gdmflexiserver --new
 # Lock
-bindsym $mod+Control+Return exec ~/.i3/fuzzy_lock.sh
+bindsym $mod+Control+Return exec xautolock -locknow
 # exec killall xautolock
-exec xautolock -time 15 -locker '~/.i3/fuzzy_lock.sh' &
+# exec xautolock -time 2 -locker '~/.i3/crypto_lock.sh' &
+# exec killall xidlehook
+exec --no-startup-id "xidlehook --timer 300 'xgamma -gamma 0.6' 'xgamma -gamma 1.0'  --timer 60  '$HOME/.i3/fuzzy_lock.sh'  'xgamma -gamma 1.0'"
+exec --no-startup-id "$HOME/.i3/xidlehook.sh"
 
 # My scratchpads
 bindsym $mod+F1 exec i3-scratchpad -t -atc -mt -d100%x33% $term
-bindsym $mod+F3 exec i3-scratchpad -s "HDMI-0" -t -acl -ml -d50%x100% keepass
+bindsym $mod+F3 exec i3-scratchpad -s "DP-5" -t -acl -ml -d50%x100% keepass
 bindsym $mod+F4 exec i3-scratchpad -t -acc -mb -d80%x80% spotify
 
 # Media player controls
@@ -208,12 +211,21 @@ for_window [class="^dota2$"] fullscreen
 for_window [class="^dota2$"] move to workspace dota2
 for_window [class="^dota2$"] workspace dota2
 # steam bigpicture uses lowercase 'steam' as it's class
-for_window [class="^steam$"] move to workspace big_picture
-for_window [class="^steam$"] workspace big_picture
+for_window [class="^steam$"] move to workspace steam
+for_window [class="^steam$"] workspace steam
 # We need to set normal steam to also have a workspace, or it will get left
 # behind when big picure closes
 for_window [class="^Steam$"] move to workspace steam
 for_window [class="^Steam$"] workspace steam
+
+# Qjackctl
+for_window [class="^QjackCtl"] move to workspace qjackctl
+for_window [class="^QjackCtl"] i3-msg 'workspace qjackctl; append_layout /home/jason/.i3/qjackctl.json'
+
+# xsane
+for_window [class="^Xsane$"] move to workspace xsane
+# for_window [class="^Xsane$"] floating disable
+# for_window [class="^Xsane$"] i3-msg 'workspace xsane; append_layout /home/jason/.i3/xsane.json'
 
 # My openssh popup
 for_window [window_role="LoginTerm" title="OpenSSH"] floating enable
