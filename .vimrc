@@ -6,20 +6,21 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"Plug 'altercation/vim-colors-solarized'
+# Core functionality plugins
 Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/CtrlP.vim'
-Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
-Plug 'hashivim/vim-hashicorp-tools'
-Plug 'junegunn/vim-easy-align'
-Plug 'majutsushi/tagbar'
-Plug 'OmniSharp/omnisharp-vim'
-Plug 'puremourning/vimspector'
-Plug 'scrooloose/nerdtree'
 Plug 'dense-analysis/ale'
+Plug 'OmniSharp/omnisharp-vim'
+" UI plugins
+Plug 'vim-airline/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Utility/action plugions
 Plug 'SirVer/ultisnips'
-Plug 'thaerkh/rainbow_parentheses.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'ctrlpvim/CtrlP.vim'
+Plug 'vim-scripts/DrawIt'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -27,12 +28,14 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/DrawIt'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'davisdude/vim-love-docs', {'branch': 'build'}
-Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'junegunn/vim-easy-align'
+" Language and library support pluins
+Plug 'davidhalter/jedi-vim'
 Plug 'sirtaj/vim-openscad'
+Plug 'davisdude/vim-love-docs', {'branch': 'build'}
+" Misc tools
+Plug 'puremourning/vimspector'
+Plug 'hashivim/vim-hashicorp-tools'
 call plug#end()
 
 "------------------------------------------------------------------------------
