@@ -17,7 +17,7 @@ Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'puremourning/vimspector'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'SirVer/ultisnips'
 Plug 'thaerkh/rainbow_parentheses.vim'
 Plug 'tpope/vim-abolish'
@@ -51,24 +51,11 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-
-" Syntastic
-" ---------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_w = 0
-let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_python_flake8_args = "--max-complexity 10"
-let g:syntastic_lua_luac_executable = "luac5.3"
-
-command! Nostyle let g:syntastic_quiet_messages = { "type": "style" } | edit
-command! Style let g:syntastic_quiet_messages = { } | edit
+" ALE
+" ---
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_c_parse_makefile = 1
 
 
 " Easy Align
@@ -76,10 +63,6 @@ command! Style let g:syntastic_quiet_messages = { } | edit
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Jedi
-" ----
-"let g:jedi#smart_auto_mappings = 0
-let g:syntastic_python_python_exec = 'python3'
 
 " NERDtree
 " --------
