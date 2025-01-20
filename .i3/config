@@ -231,3 +231,6 @@ for_window [class="^Xsane$"] move to workspace xsane
 for_window [window_role="LoginTerm" title="OpenSSH"] floating enable
 
 for_window [class="love"] floating disable
+
+# systembus-notify allows systembus notifications to bubble up to my user
+exec --no-startup-id 'systembus-notify'
