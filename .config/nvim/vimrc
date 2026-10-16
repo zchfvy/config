@@ -1,0 +1,170 @@
+" Bootstrap vim plug
+"------------------------------------------------------------------------------
+" All important mapleader reconfig
+"------------------------------------------------------------------------------
+
+let g:mapleader = " "
+
+"------------------------------------------------------------------------------
+" Plugin specific config
+"------------------------------------------------------------------------------
+
+" Vim-Colors-Solarized
+" --------------------
+"set background=light
+" if system("~/.zsh_themes/is_term_dark.sh")
+"   set background=dark
+" endif
+" colorscheme solarized
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+colorscheme default
+set background=dark  " need to do this otherwise you get white on white hilights!
+set t_Co=16  " Respect terminal colors
+
+
+" ALE
+" ---
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
+let g:ale_c_parse_makefile = 1
+nmap <leader>ld <Plug>(ale_go_to_definition)
+nmap <leader>lf <Plug>(ale_find_references)
+nmap <leader>lr <Plug>(ale_rename)
+nmap <leader>la <Plug>(ale_code_action)
+nmap <leader>lx <Plug>(ale_fix)
+autocmd ColorScheme * highlight ALEVirtualTextError ctermfg=red
+autocmd ColorScheme * highlight ALEVirtualTextWarning ctermfg=yellow
+
+
+" Easy Align
+" ----------
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+
+" NERDtree
+" --------
+nmap <C-n>   :NERDTreeToggle<CR>
+nmap <leader>nf   :NERDTreeFind<CR>
+let NERDTreeIgnore = ['\.pyc$', '\.meta$']
+let g:NERDTreeWinSize=40
+
+" Fugitive
+" --------
+set diffopt+=vertical
+
+" Supertab
+" --------
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Airline
+" -------
+let g:airline_powerline_fonts = 1
+set laststatus=2 " Makes airlien load correctly, somehow
+
+" Ctrlp
+" -----
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_custom_ignore = '\v[\/]\.(pyc|meta)$'
+
+" Tagbar
+" ------
+nmap <C-t> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+" Vimpsector
+" -----
+let g:vimspector_enable_mappings = 'HUMAN'
+
+"------------------------------------------------------------------------------
+" configure editor with tabs and nice stuff...
+"------------------------------------------------------------------------------
+set expandtab           " enter spaces when tab is pressed
+set textwidth=120       " break lines when line length increases
+set tabstop=4           " use 4 spaces to represent tab
+set softtabstop=4
+set shiftwidth=4        " number of spaces to use for auto indent
+set autoindent          " copy indent from current line when starting a new line
+
+" C syntax hilighting is a long-standing vim bug
+let c_no_curly_error=1
+
+" make backspaces more powerfull
+set backspace=indent,eol,start
+
+set ruler               " show line and column number
+syntax on   			" syntax highlighting
+set showcmd 			" show (partial) command in status line
+
+" Add relative line numbers
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" Enable undo and backup
+set undofile
+set undolevels=100
+set undoreload=1000
+set backup
+
+" Store vim files in their own location
+silent !mkdir -p ~/.nvim/backup
+set backupdir=~/.nvim/backup,/tmp
+silent !mkdir -p ~/.nvim/swp
+set directory=~/.nvim/swp
+silent !mkdir -p ~/.nvim/undo
+set undodir=~/.nvim/undo
+
+" configure expanding of tabs for various file types
+au BufRead,BufNewFile *.py set expandtab
+au BufRead,BufNewFile *.c set noexpandtab
+au BufRead,BufNewFile *.h set noexpandtab
+au BufRead,BufNewFile Makefile* set noexpandtab
+
+" Make coppy buffer better
+set viminfo-=<50,s10
+
+"Mak the <TAB> menu background distainct from main terminal BG
+highlight Pmenu ctermbg=darkgrey
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+" Gutter + word wrap
+set textwidth=80
+set colorcolumn=81
+highlight colorcolumn ctermbg=4
+"let &l:colorcolumn="+".join(range(1,999),",+")
+" hi NonText ctermbg=0
+
+" Use underline for spell check
+hi SpellBad cterm=underline
+set spellfile=~/.vim/spell.utf-8.add
+
+" Usaeable mouse
+set mouse=v
+
+" Fix popups markdown hilightiung
+"autocmd ALEDetail * hi link markdownError NONE
+
+" " Make typescript not hang
+" set regexpengine=0
+" filetype plugin indent on
+
+" Neovim-specific!
+colorscheme tokyonight
+
+" Make eslint faster
+let $ESLINT_D_PPID = getpid()
+let g:ale_javascript_eslint_executable = 'eslint_d'
+let g:ale_javascript_eslint_use_global = 1
+
+" Make markdown blocks work
+let g:markdown_fenced_languages = ['js=javascript', 'tsx=typescript', 'ts=typescript']
