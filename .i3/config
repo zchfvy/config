@@ -178,7 +178,7 @@ bindsym $mod+Control+Return exec xautolock -locknow
 # exec killall xautolock
 # exec xautolock -time 2 -locker '~/.i3/crypto_lock.sh' &
 # exec killall xidlehook
-exec --no-startup-id "xidlehook --timer 300 'xgamma -gamma 0.6' 'xgamma -gamma 1.0'  --timer 60  '$HOME/.i3/fuzzy_lock.sh'  'xgamma -gamma 1.0'"
+# exec --no-startup-id "xidlehook --timer 300 'xgamma -gamma 0.6' 'xgamma -gamma 1.0'  --timer 60  '$HOME/.i3/fuzzy_lock.sh'  'xgamma -gamma 1.0'"
 exec --no-startup-id "$HOME/.i3/xidlehook.sh"
 
 # My scratchpads
@@ -217,6 +217,7 @@ for_window [class="^steam$"] workspace steam
 # behind when big picure closes
 for_window [class="^Steam$"] move to workspace steam
 for_window [class="^Steam$"] workspace steam
+for_window [class="steam" title="Steam Big Picture Mode"]  exec "sleep 1 && i3-msg '[class=\"steam\" title=\"Steam Big Picture Mode\"]' fullscreen disable, floating enable, resize set 1920 1080, move position 0 0" 
 
 # Qjackctl
 for_window [class="^QjackCtl"] move to workspace qjackctl
@@ -231,6 +232,10 @@ for_window [class="^Xsane$"] move to workspace xsane
 for_window [window_role="LoginTerm" title="OpenSSH"] floating enable
 
 for_window [class="love"] floating disable
+# for_window [instance="Godot_Engine"] move to workspace godot_engine
+# for_window [instance="Godot_Engine"] workspace godot_engine
+# for_window [instance="Godot_Engine"] fullscreen
+for_window [instance="Godot_Engine"] floating enable
 
 # systembus-notify allows systembus notifications to bubble up to my user
 exec --no-startup-id 'systembus-notify'

@@ -30,9 +30,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")" 
 
 # Pyenv
-# export PATH="/home/jason/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_VIRUALENV_PROMPT=""
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
@@ -85,3 +86,8 @@ cheat() { curl -s cheat.sh/"$1" | less }
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias gam="/home/jason/bin/gam7/gam"
+export PATH="$HOME/.local/bin:$PATH"
+
+source ~/.auth_keys

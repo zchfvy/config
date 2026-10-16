@@ -18,13 +18,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mbbill/undotree'
 " Utility/action plugions
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" Plug 'thomasfaingnaert/vim-lsp-snippets'
-" Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'ctrlpvim/CtrlP.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
@@ -34,9 +33,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-Plug 'prabirshrestha/vim-lsp'
 " Language and library support pluins
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'sirtaj/vim-openscad'
 Plug 'davisdude/vim-love-docs', {'branch': 'build'}
 Plug 'habamax/vim-godot'
@@ -45,6 +43,12 @@ Plug 'puremourning/vimspector'
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'epheien/termdbg'
 call plug#end()
+
+"------------------------------------------------------------------------------
+" All important mapleader config
+"------------------------------------------------------------------------------
+
+let g:mapleader = " "
 
 "------------------------------------------------------------------------------
 " Plugin specific config
@@ -63,6 +67,7 @@ call plug#end()
 " endif
 colorscheme default
 set background=dark  " need to do this otherwise you get white on white hilights!
+set t_Co=16
 
 
 " ALE
@@ -70,6 +75,11 @@ set background=dark  " need to do this otherwise you get white on white hilights
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 let g:ale_c_parse_makefile = 1
+nmap <leader>ld <Plug>(ale_goto_definition)
+nmap <leader>lf <Plug>(ale_find_references)
+nmap <leader>lr <Plug>(ale_rname)
+nmap <leader>la <Plug>(ale_code_action)
+nmap <leader>lx <Plug>(ale_fix)
 
 
 " Easy Align
@@ -81,7 +91,9 @@ nmap ga <Plug>(EasyAlign)
 " NERDtree
 " --------
 nmap <C-n>  :NERDTreeToggle<CR>
+nmap <leader>nf  :NERDTreeFind<CR>
 let NERDTreeIgnore = ['\.pyc$', '\.meta$']
+let g:NERDTreeWinSIze=40
 
 " Fugitive
 " --------
@@ -112,6 +124,7 @@ let g:vimspector_enable_mappings = 'HUMAN'
 
 " LSP
 " ---
+highlight lspReference ctermbg=4
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -146,6 +159,10 @@ augroup lsp_install
 augroup END
 
 let g:lsp_diagnostics_enabled = 0
+
+" Undotree
+" --------
+nmap <leader>uu  :UndotreeToggle<CR>
 
 "------------------------------------------------------------------------------
 " configure editor with tabs and nice stuff...
@@ -208,7 +225,7 @@ cmap w!! w !sudo tee > /dev/null %
 " Gutter + word wrap
 set textwidth=80
 set colorcolumn=81
-highlight colorcolumn ctermbg=18   
+highlight colorcolumn ctermbg=4
 "let &l:colorcolumn="+".join(range(1,999),",+")
 " hi NonText ctermbg=0
 
